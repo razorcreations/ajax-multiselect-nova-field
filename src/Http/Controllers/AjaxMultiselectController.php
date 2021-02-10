@@ -20,7 +20,7 @@ class AjaxMultiselectController extends Controller
 
         $builder->where($label, 'like', "%$query%");
         if ($custom_query) {
-            $custom_query = parse_str($custom_query, $query);
+            parse_str($custom_query, $query);
             foreach ($query as $key => $val) {
                 $builder->whereRaw($key.'= ?', $val);
             }
