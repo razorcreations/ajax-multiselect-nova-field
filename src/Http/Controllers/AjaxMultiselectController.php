@@ -20,9 +20,8 @@ class AjaxMultiselectController extends Controller
 
         $builder->where($label, 'like', "%$query%");
         if ($custom_query) {
-            $col = strtok($custom_query, '?');
-            $value = str_replace('=', '', strtok( '' ));
-            $builder->whereRaw($col . '?', $value);
+            $custom_query = explode('=', $custom_query);
+            $builder->whereRaw($custom_query[0] . '= ?', $custom_query[1]);
         }
         $builder->limit($request->input('limit') ?? self::DEFAULT_LIMIT);
 
