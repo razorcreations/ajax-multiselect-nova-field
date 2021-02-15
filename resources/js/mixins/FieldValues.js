@@ -7,7 +7,7 @@ export default {
 
   methods: {
     setValueFromField() {
-      this.value = JSON.parse(this.field.value || '')
+      this.value = this.field.value  ? JSON.parse(this.field.value || '') : '';
     },
     async setInitialOptions() {
       if (this.value.length > 0) {
